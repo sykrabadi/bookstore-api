@@ -11,31 +11,31 @@ import (
 	"strings"
 )
 
-type BookHTTPHandler struct{
+type BookHTTPHandler struct {
 	bookService services.BookService
 }
 
-func NewBookHTTPHandler(bookService services.BookService) *BookHTTPHandler{
+func NewBookHTTPHandler(bookService services.BookService) *BookHTTPHandler {
 	return &BookHTTPHandler{
 		bookService: bookService,
 	}
 }
 
-func (h *BookHTTPHandler) AddBookHandler(w http.ResponseWriter, r *http.Request){
-	if r.Method != http.MethodPost{
+func (h *BookHTTPHandler) AddBookHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
 		log.Println("[BookHTTPHandler.AddBookHandler] invalid method")
 		return
 	}
 	payload := domain.Book{}
 	body, err := io.ReadAll(r.Body)
-	if err!= nil{
+	if err != nil {
 		log.Printf("[BookHTTPHandler.AddBookHandler] error reading request body with error %v \n", err)
 		return
 	}
 
 	err = json.Unmarshal(body, &payload)
 
-	if err!= nil{
+	if err != nil {
 		log.Printf("[BookHTTPHandler.AddBookHandler] error unmarshaling request body with error %v \n", err)
 		return
 	}
