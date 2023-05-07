@@ -43,3 +43,31 @@ func (b *BookFirestoreRepository) AddBook(book domain.Book) error {
 
 	return nil
 }
+
+func (b *BookFirestoreRepository) ViewBookByISBN(ISBN string) (*domain.Book, error){
+	ctx := context.Background()
+	dsnap, err := b.client.Collection("books").Doc(ISBN).Get(ctx)
+
+	if err != nil {
+		return nil, err
+	}
+	log.Println(dsnap.Data())
+
+	return nil, nil
+}
+
+func (b *BookFirestoreRepository) ViewBooks() ([]*domain.Book, error){
+	var resp []*domain.Book
+	ctx := context.Background()
+	dsnaps, err := b.client.Collection("books").Limit(5).Documents(ctx).GetAll()
+	if err != nil {
+		return nil, err
+	}
+
+	for _, data := range dsnaps{
+		resp = append(resp, )
+		log.Println(data.Data()["Author"])
+	}
+
+	return nil, nil
+}

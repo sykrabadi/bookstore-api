@@ -16,7 +16,9 @@ import (
 func InitHttpServer(bookService services.BookService) {
 	mux := http.NewServeMux()
 	bookHandler := handler.NewBookHTTPHandler(bookService)
-	mux.HandleFunc("/books", bookHandler.AddBookHandler)
+	mux.HandleFunc("/book", bookHandler.AddBookHandler)
+	mux.HandleFunc("/books/", bookHandler.ViewBookByISBNHandler)
+	mux.HandleFunc("/books", bookHandler.ViewBooks)
 
 	port := 8000
 	server := http.Server{
