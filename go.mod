@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	cloud.google.com/go/firestore v1.9.0
+	cloud.google.com/go/pubsub v1.30.1
 	github.com/joho/godotenv v1.5.1
 )
 
@@ -13,7 +14,6 @@ require (
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect
 	cloud.google.com/go/iam v0.13.0 // indirect
 	cloud.google.com/go/longrunning v0.4.1 // indirect
-	cloud.google.com/go/pubsub v1.30.1 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
